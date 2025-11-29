@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Build output
+build/
+bin/
+*.o
+*.out
+*.exe
+
