@@ -1,23 +1,17 @@
-// 2752 세수정렬
-#include <bits/stdc++.h>
+// bg 2752 세수정렬
+#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-
   int a, b, c;
-  int mmax, mmin, mmid;
-  cin >> a >> b >> c;
 
-  mmax = max({a, b, c});
-  mmin = min({a, b, c});
-  mmid = a + b + c - mmax - mmin;
+  int max = max({a, b, c});
+  int min = min({a, b, c});
 
-  cout << mmin << " "  << mmid << " " << mmax;
+  int mid = a + b + c - max - min;
 
-
+  cout << min << mid << max;
   return 0;
 }
-
