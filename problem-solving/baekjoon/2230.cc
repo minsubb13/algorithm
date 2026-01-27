@@ -1,51 +1,35 @@
-// bg 2230 수 고르기 (이진탐색)
+// bg 2230 수 고르기
 #include <bits/stdc++.h>
 
 using namespace std;
 
-long long n;
-long long m;
-long long ret = 0x7fffffff;
-
-vector<long long> a(100001);
-
-int lower_bound(long long target, int st, int en) {
-  int res = -1;
-
-  while (st <= en) {
-    int mid = (st + en) / 2;
-
-    if (a[mid] >= target) {
-      res = mid;
-      en = mid - 1;
-    } else {
-      st = mid + 1;
-    }
-  }
-  return res;
-}
+int n, m;
 
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
   cin >> n >> m;
+  vector<int> a(n);
   for (int i = 0; i < n; i++) {
     cin >> a[i];
   }
 
-  sort(a.begin(), a.begin() + n);
+  sort(a.begin(), a.end());
 
-  for (int i = 0; i < n; i++) {
-    long long target = a[i]+m;
-
-    int j = lower_bound(target, i, n-1);
-    if (a[j]-a[i] < ret) {
-      ret = a[j]-a[i];
+  int answer = 1987654321;
+  int en = 0;
+  for (int st = 0; st < a.size(); st++) {
+    while (a[en] - a[st] < m && en < a.size()) {
+      en++;
     }
+    if (en == n) {
+      break;
+    }
+    answer = min(answer, a[en] - a[st]);
   }
 
-  cout << ret;
+  cout << answer;
   return 0;
 }
 
